@@ -58,17 +58,19 @@ const TAG_LABELS: Record<string, string> = {
     </p>
   </section>
 
-  <!-- Written menu -->
+  <!-- Written menu — editorial two-column flow, categories numbered like the photo pages -->
   {showItems && menuItems.length > 0 && (
-    <section class="container-narrow pb-16 reveal" aria-label={t("menu.title")}>
-      <div class="max-w-2xl mx-auto">
-        {categories.map((cat) => (
-          <div class="mb-12">
+    <section class="container-narrow pb-16 md:pb-24 reveal" aria-label={t("menu.title")}>
+      <div class="md:columns-2 md:gap-16 max-w-4xl mx-auto">
+        {categories.map((cat, ci) => (
+          <div class="mb-14 break-inside-avoid">
             {cat && (
-              <div class="flex items-center gap-4 mb-6">
+              <div class="flex items-baseline gap-4 mb-7">
+                <span class="display italic text-2xl text-[var(--color-gold)] shrink-0">
+                  {romanNumerals[ci] ?? String(ci + 1)}
+                </span>
                 <span class="block h-px flex-1 bg-[var(--color-line)]" />
-                <p class="eyebrow text-[var(--color-gold)]">{cat}</p>
-                <span class="block h-px flex-1 bg-[var(--color-line)]" />
+                <p class="eyebrow shrink-0">{cat}</p>
               </div>
             )}
             <ul class="divide-y divide-[var(--color-line)]">
@@ -108,7 +110,7 @@ const TAG_LABELS: Record<string, string> = {
     <section class="container-narrow pb-24 reveal" aria-label={t("menu.title")}>
       <div class="grid md:grid-cols-2 gap-10 md:gap-14" id="menu-grid">
         {pages.map((p, i) => (
-          <figure class="menu-card group">
+          <figure class:list={["menu-card group", i % 2 === 1 && "md:mt-16"]}>
             <div class="menu-numeral">
               <span class="block h-px w-10 bg-gradient-to-r from-transparent to-[var(--color-gold-deep)] opacity-70" />
               <span class="display italic text-base text-[var(--color-gold)]">{p.numeral}</span>
