@@ -19,7 +19,10 @@ const { locale } = Astro.params as { locale: Locale };
 const t = useTranslations(locale);
 ---
 
-<BaseLayout title={`${siteConfig.name} · ${t("hero.eyebrow")}`}>
+<BaseLayout
+  title={`${siteConfig.name} — ${t("hero.eyebrow")}`}
+  description={t("hero.subtitle")}
+>
   <HeroSection locale={locale} />
 
   <!-- About — asymmetric pullquote split -->
