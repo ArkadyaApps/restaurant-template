@@ -26,12 +26,12 @@ const t = useTranslations(locale);
   <HeroSection locale={locale} />
 
   <!-- About — asymmetric pullquote split -->
-  <section id="about" class="container-narrow py-24 md:py-32">
+  <section id="about" class="container-narrow py-28 md:py-44">
     <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
-      <div class="md:col-span-5 md:sticky md:top-32">
+      <div class="md:col-span-5 md:sticky md:top-32 reveal">
         <p class="eyebrow mb-5">{t("about.title")}</p>
         <p
-          class="display italic text-3xl md:text-5xl text-[var(--color-gold-soft)] leading-[1.05]"
+          class="display italic text-4xl md:text-6xl text-[var(--color-gold-soft)] leading-[1.02]"
         >
           "{t("about.pullquote")}"
         </p>
@@ -58,7 +58,7 @@ const t = useTranslations(locale);
         </div>
       </div>
       <div
-        class="md:col-span-6 md:col-start-7 md:border-l md:border-[var(--color-line)] md:pl-10"
+        class="md:col-span-6 md:col-start-7 md:border-l md:border-[var(--color-line)] md:pl-10 reveal reveal-d2"
       >
         <p class="text-lg md:text-xl text-[var(--color-fg-muted)] leading-loose font-light">
           {t("about.body")}
@@ -70,7 +70,7 @@ const t = useTranslations(locale);
   <!-- Menu photo grid -->
   {
     siteConfig.images.menu.length > 0 && (
-      <section class="container-narrow py-8">
+      <section class="container-narrow py-8 reveal">
         <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
           {siteConfig.images.menu.map((src, i) => (
             <div class="aspect-square overflow-hidden">
@@ -87,12 +87,18 @@ const t = useTranslations(locale);
     )
   }
 
-  <ReservationStrip locale={locale} />
+  <div class="reveal">
+    <ReservationStrip locale={locale} />
+  </div>
 
-  <div id="hours">
+  <div id="hours" class="reveal">
     <OpeningHours locale={locale} />
   </div>
 
-  <InstagramFeed locale={locale} />
-  <ContactSection locale={locale} />
+  <div class="reveal">
+    <InstagramFeed locale={locale} />
+  </div>
+  <div class="reveal">
+    <ContactSection locale={locale} />
+  </div>
 </BaseLayout>

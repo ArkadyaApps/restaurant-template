@@ -18,22 +18,27 @@ const isClosedToday = siteConfig.hours[todayName] === null;
 ---
 
 <section
-  class="relative overflow-hidden min-h-[92vh] flex items-center"
+  class="relative overflow-hidden min-h-[100vh] flex items-center"
   aria-label={siteConfig.name}
 >
-  <!-- candlelight layers -->
+  <!-- Cinematic ambient loop — rendered per-theme via HyperFrames -->
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <video
+      class="absolute inset-0 w-full h-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="/images/og.png"
+    >
+      <source src="/videos/hero.mp4" type="video/mp4" />
+    </video>
+    <!-- scrim for text legibility over the video -->
     <div
       class="absolute inset-0"
-      style="background:
-        radial-gradient(circle at 18% 28%, oklch(0.55 0.16 35 / 0.32), transparent 38%),
-        radial-gradient(circle at 82% 22%, oklch(0.5 0.13 28 / 0.22), transparent 42%),
-        radial-gradient(circle at 60% 78%, oklch(0.6 0.12 60 / 0.16), transparent 50%),
-        radial-gradient(circle at 22% 80%, oklch(0.45 0.15 22 / 0.28), transparent 45%);"
+      style="background: linear-gradient(180deg, oklch(from var(--color-bg) l c h / 0.35) 0%, oklch(from var(--color-bg) l c h / 0.15) 35%, oklch(from var(--color-bg) l c h / 0.55) 100%);"
     >
     </div>
-    <!-- soft animated flicker -->
-    <div class="absolute inset-0 hero-flicker"></div>
     <!-- film-grain feel -->
     <div
       class="absolute inset-0 opacity-[0.05] mix-blend-overlay"
@@ -164,8 +169,8 @@ const isClosedToday = siteConfig.hours[todayName] === null;
     <p class="eyebrow mb-8 hero-fade" style="--d:120ms;">{t("hero.eyebrow")}</p>
 
     <h1
-      class="display italic text-[var(--color-gold-soft)] leading-[0.9] hero-fade"
-      style="--d:200ms; font-size:clamp(4.5rem, 14vw, 11rem);"
+      class="display italic text-[var(--color-gold-soft)] leading-[0.86] hero-fade"
+      style="--d:200ms; font-size:clamp(5rem, 17vw, 13.5rem);"
     >
       {t("hero.title")}
     </h1>
@@ -220,36 +225,6 @@ const isClosedToday = siteConfig.hours[todayName] === null;
     animation-delay: var(--d, 0ms);
   }
 
-  @keyframes hero-flicker {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    20% {
-      opacity: 0.96;
-    }
-    50% {
-      opacity: 1.02;
-    }
-    80% {
-      opacity: 0.97;
-    }
-  }
-  .hero-flicker {
-    background:
-      radial-gradient(
-        circle at 30% 40%,
-        oklch(0.7 0.15 60 / 0.05),
-        transparent 25%
-      ),
-      radial-gradient(
-        circle at 70% 60%,
-        oklch(0.7 0.15 40 / 0.04),
-        transparent 30%
-      );
-    animation: hero-flicker 6s ease-in-out infinite;
-  }
-
   @keyframes hero-pulse {
     0%,
     100% {
@@ -269,9 +244,20 @@ const isClosedToday = siteConfig.hours[todayName] === null;
       animation: none;
       transform: none;
     }
-    .hero-flicker,
     .hero-pulse {
       animation: none;
     }
   }
 </style>
+
+<script>
+  // Respect reduced-motion: freeze the ambient loop on its first frame.
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const pauseIfReduced = () => {
+    document.querySelectorAll<HTMLVideoElement>("section video").forEach((v) => {
+      if (mq.matches) v.pause();
+    });
+  };
+  pauseIfReduced();
+  mq.addEventListener("change", pauseIfReduced);
+</script>
