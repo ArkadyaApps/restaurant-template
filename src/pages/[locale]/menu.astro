@@ -47,12 +47,12 @@ const TAG_LABELS: Record<string, string> = {
   description={t("menu.intro")}
 >
   <!-- Header -->
-  <section class="container-narrow pt-28 pb-14 text-center max-w-2xl reveal">
+  <section class="container-narrow pt-24 pb-10 text-center max-w-2xl reveal">
     <p class="eyebrow mb-6">{t("hero.eyebrow")}</p>
     <h1 class="display italic text-6xl md:text-8xl text-[var(--color-gold-soft)] mb-8">
       {t("menu.title")}
     </h1>
-    <Ornament class="mb-10" />
+    <Ornament class="mb-8" />
     <p class="text-lg text-[var(--color-fg-muted)] leading-loose font-light">
       {t("menu.intro")}
     </p>
@@ -60,7 +60,7 @@ const TAG_LABELS: Record<string, string> = {
 
   <!-- Written menu — editorial two-column flow, categories numbered like the photo pages -->
   {showItems && menuItems.length > 0 && (
-    <section class="container-narrow pb-16 md:pb-24 reveal" aria-label={t("menu.title")}>
+    <section class="container-narrow pb-10 md:pb-16 reveal" aria-label={t("menu.title")}>
       <div class="md:columns-2 md:gap-16 max-w-4xl mx-auto">
         {categories.map((cat, ci) => (
           <div class="mb-14 break-inside-avoid">
@@ -107,7 +107,7 @@ const TAG_LABELS: Record<string, string> = {
 
   <!-- Photo menu — drag-scroll reel, click a card to open the lightbox -->
   {showPhotos && pages.length > 0 && (
-    <section class="pb-24 reveal overflow-hidden" aria-label={t("menu.title")}>
+    <section class="pb-14 reveal overflow-hidden" aria-label={t("menu.title")}>
       <div class="reel-track" id="menu-grid" data-reel>
         {pages.map((p, i) => (
           <figure class="reel-card group">
@@ -132,14 +132,14 @@ const TAG_LABELS: Record<string, string> = {
 
   <!-- No content fallback -->
   {!showPhotos && (!showItems || menuItems.length === 0) && (
-    <section class="container-narrow pb-24 text-center max-w-2xl">
+    <section class="container-narrow pb-14 text-center max-w-2xl">
       <p class="text-lg text-[var(--color-fg-muted)] italic mb-4">{t("menu.comingSoon")}</p>
       <p class="text-sm text-[var(--color-fg-subtle)]">{t("menu.comingSoonSub")}</p>
     </section>
   )}
 
   <!-- Closing reserve CTA -->
-  <section class="container-narrow pb-32 text-center max-w-2xl reveal">
+  <section class="container-narrow pb-16 text-center max-w-2xl reveal">
     <Ornament class="mb-8" />
     <p class="display italic text-3xl md:text-4xl text-[var(--color-gold-soft)] mb-8 leading-snug">
       {t("menu.cta")}

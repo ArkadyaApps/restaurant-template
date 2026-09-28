@@ -18,7 +18,7 @@ const isClosedToday = siteConfig.hours[todayName] === null;
 ---
 
 <section
-  class="relative overflow-hidden min-h-[100vh] flex items-center"
+  class="relative overflow-hidden min-h-[88svh] flex items-center"
   aria-label={siteConfig.name}
 >
   <!-- Cinematic ambient loop — rendered per-theme via HyperFrames -->
@@ -138,10 +138,10 @@ const isClosedToday = siteConfig.hours[todayName] === null;
   </div>
 
   <div
-    class="container-narrow relative pt-12 pb-20 md:pt-16 md:pb-28 text-center w-full"
+    class="container-narrow relative pt-10 pb-16 md:pt-12 md:pb-20 text-center w-full"
   >
     <!-- live status pill -->
-    <div class="flex justify-center mb-10 hero-fade" style="--d:0ms;">
+    <div class="flex justify-center mb-8 hero-fade" style="--d:0ms;">
       <span
         class:list={[
           "inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border text-[0.66rem] uppercase tracking-[0.28em] backdrop-blur-sm",
@@ -166,7 +166,7 @@ const isClosedToday = siteConfig.hours[todayName] === null;
       </span>
     </div>
 
-    <p class="eyebrow mb-8 hero-fade" style="--d:120ms;">{t("hero.eyebrow")}</p>
+    <p class="eyebrow mb-6 hero-fade" style="--d:120ms;">{t("hero.eyebrow")}</p>
 
     <h1
       class="display italic text-[var(--color-gold-soft)] leading-[0.86] hero-fade"
@@ -186,7 +186,7 @@ const isClosedToday = siteConfig.hours[todayName] === null;
       {t("hero.subtitle")}
     </p>
 
-    <div class="mt-12 flex flex-wrap justify-center gap-4 hero-fade" style="--d:560ms;">
+    <div class="mt-10 flex flex-wrap justify-center gap-4 hero-fade" style="--d:560ms;">
       <a href={localizedPath(locale, "/booking")} class="btn-primary">
         {t("hero.cta")}
       </a>

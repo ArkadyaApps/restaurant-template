@@ -26,8 +26,8 @@ const t = useTranslations(locale);
   <HeroSection locale={locale} />
 
   <!-- About — asymmetric pullquote split -->
-  <section id="about" class="container-narrow py-28 md:py-44">
-    <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
+  <section id="about" class="container-narrow py-14 md:py-24">
+    <div class="grid md:grid-cols-12 gap-8 md:gap-14 items-start">
       <div class="md:col-span-5 md:sticky md:top-32 reveal">
         <p class="eyebrow mb-5">{t("about.title")}</p>
         <p
@@ -70,8 +70,8 @@ const t = useTranslations(locale);
   <!-- Menu — draggable scattered-photo reel, not a grid -->
   {
     siteConfig.images.menu.length > 0 && (
-      <section class="py-16 md:py-24 reveal overflow-hidden">
-        <div class="container-narrow flex items-end justify-between gap-6 mb-2">
+      <section class="py-10 md:py-16 reveal overflow-hidden">
+        <div class="container-narrow flex items-end justify-between gap-6 mb-4">
           <div>
             <p class="eyebrow mb-3">{t("menu.title")}</p>
             <p class="display italic text-3xl md:text-4xl text-[var(--color-gold-soft)]">
